@@ -1,0 +1,10 @@
+Phase 1:
+Dump of assembler code for function getbuf:
+=> 0x0000000000401829 <+0>:     sub    $0x38,%rsp
+   0x000000000040182d <+4>:     mov    %rsp,%rdi
+   0x0000000000401830 <+7>:     callq  0x4019f6 <Gets>
+   0x0000000000401835 <+12>:    mov    $0x1,%eax
+   0x000000000040183a <+17>:    add    $0x38,%rsp
+   0x000000000040183e <+21>:    retq
+
+BUFFER_SIZE = 0x38 = 56
