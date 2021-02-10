@@ -6,4 +6,4 @@
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00
 c8 87 63 55 00 00 00 00 /* Set back stack pointer */
-6b 18 40 00 00 00 00 00 /* Return back to touch1 */
+6b 18 40 00 00 00 00 00 /* Return back to touch2 */

