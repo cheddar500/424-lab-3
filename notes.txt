@@ -16,8 +16,7 @@ BUFFER_SIZE = 0x38 == 56
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 56 a's, segs
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-try null terminator 
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0a
+
 
 Dump of assembler code for function touch1:
    0x000000000040183f <+0>:     sub    $0x8,%rsp
